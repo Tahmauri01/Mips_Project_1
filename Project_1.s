@@ -13,3 +13,10 @@ main:
     mfhi $t2 #stores remainder into $t2
 
     li $t3, 26 #stores 26 into $t3
+    add $t4, $t3, $t2 #$t4 = 26 + ($t0 % 11) or N
+    li $t5, 10 #loads 10 into $t5
+    sub $t6, $t4, $t5 #$t6 = $t4 - $t5 or M
+
+    li $t7, 0x61 #stores 'a' into $t7
+    add $t8, $t7, $t6 #$t8 = 'a' + M
+    
