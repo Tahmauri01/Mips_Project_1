@@ -1,2 +1,9 @@
 .data
-    id asciiz "@03134060"   #Howard ID
+inputBuffer: .space 12      #buffer for 10 characters
+NAoutput: .asciiz "N/A"     #Output for invalid string
+
+.text
+.globl main
+
+main:
+
