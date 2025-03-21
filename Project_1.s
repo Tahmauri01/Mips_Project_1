@@ -19,4 +19,6 @@ main:
 
     li $t7, 0x61 #stores 'a' into $t7
     add $t8, $t7, $t6 #$t8 = 'a' + M
-    
+    addi $t8, $t8, -1 #cap for lowercase
+
+    li $t9, 0x41 #stores 'A' int $t9    
