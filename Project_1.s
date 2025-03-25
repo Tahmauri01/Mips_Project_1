@@ -44,3 +44,12 @@ loop:
 
     sub $s5, $t8, $t9 #char - '0', converts ASCII to number value
     j valid_digit #jumps to valid_digit function
+
+check_lowercase:
+    li $s6, 0x61 #loads 'a' in $s6
+    blt $t8, $s6, check_uppercase #if char < 'a', checks if its an uppercase
+    bgt $t8, $t4, check_uppercase #if char > lowecase cap, checks if its an uppercase
+
+    sub $s5, $t8, $s6 #if char is lowercase $s5 = char - 'a'
+    addi $s5, $s5, 10 #$s5 = 10 + (char - 'a')
+    
