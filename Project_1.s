@@ -93,7 +93,7 @@ finish_loop:
     j exit_program #jumps to exit_program function
 
 print_na:
-    li $vo, 4 #command for printing a string
+    li $v0, 4 #command for printing a string
     la $a0, outputNA #loads the address of outputNA into $a0
     syscall #calls print command
 
