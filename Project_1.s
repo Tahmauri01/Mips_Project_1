@@ -40,7 +40,7 @@ loop:
     li $t9, 0x30 #loads '0' into $t9
     li $s4, 0x39 #loads '9' into $s4
     blt $t8, $t9, check_lowercase #if the char < '0', check lowecase range
-    bgt $t8, $s4, check_uppercase #if char > '9', check lowecase range
+    bgt $t8, $s4, check_lowercase #if char > '9', check lowecase range
 
     sub $s5, $t8, $t9 #char - '0', converts ASCII to number value
     j valid_digit #jumps to valid_digit function
@@ -59,7 +59,7 @@ check_uppercase:
     blt $t8, $s7, not_valid #if char < 'A', not a valid char
     bgt $t8, $t6, not_valid #if char > uppercase cap, not a valid char
 
-    sub $s5, $t8, $t7 #s5 = char - 'A'
+    sub $s5, $t8, $s7 #s5 = char - 'A'
     addi $s5, $s5, 10 #s5 = 10 + (char - 'A')
     j valid_digit #jumps to valid digit function
 
