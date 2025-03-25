@@ -30,3 +30,11 @@ main:
     li $s2, 0 #stores H in $s2
     li $s3, 0 #digit counter starting at 0
 
+loop:
+    bge $s0, 10, finish_loop #loop ends if index is >= 10
+
+    la $t7, inputBuffer #loads input buffer into $t7
+    add $t7, $t7, $s0 #$t7 = input buffer + i
+    lb $t8, 0($t7) #loads new character into $t8
+
+    li $t9, 0x30 #loads '0' into $t9
