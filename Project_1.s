@@ -18,8 +18,15 @@ main:
 
     li $t5, 0x41 #stores 'A' int $t5
     add $t6, $t5, $t2 #$t6 = 'A" + M
-    addi $t6, $t6, -1 #$cap for uppercase, t6 = 'A' + M -1
+    addi $t6, $t6, -1 #$cap for uppercase, t6 = 'A' + M - 1
 
     li $v0, 8 #reading string command for the input
-    la $a0, inputBuffer #calls input buffer
+    la $a0, inputBuffer #uses input buffer
     li $a1, 12 #max amount of characters to read
+    syscall #calls function
+
+    li $s0, 0 #starting index is 0
+    li $s1, 0 #stores G in $s1
+    li $s2, 0 #stores H in $s2
+    li $s3, 0 #digit counter starting at 0
+
