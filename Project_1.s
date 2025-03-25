@@ -7,18 +7,14 @@ NAoutput: .asciiz "N/A"     #Output for invalid string
 
 main:
 
-    li $t0, 3134060 #loads Howrad ID into $t0
-    li $t1, 11 #loads 11 into $t1
-    div $t0, $t1 #divides id by 11
-    mfhi $t2 #stores remainder into $t2
+    li $t0, 32 #N calculated
+    li $t1, 10 #loads 10 into $t1
 
-    li $t3, 26 #stores 26 into $t3
-    add $t4, $t3, $t2 #$t4 = 26 + ($t0 % 11) or N
-    li $t5, 10 #loads 10 into $t5
-    sub $t6, $t4, $t5 #$t6 = $t4 - $t5 or M
+    sub $t2, $t0, $t1 #M = $t0 - $t1
 
-    li $t7, 0x61 #stores 'a' into $t7
-    add $t8, $t7, $t6 #$t8 = 'a' + M
-    addi $t8, $t8, -1 #cap for lowercase
+    li $t3, 0x61 #stores 'a' into $t3
+    add $t4, $t3, $t2 #$t4 = 'a' + M
+    addi $t4, $t4, -1 #cap for lowercase, $t4 = 'a' + M - 1
 
-    li $t9, 0x41 #stores 'A' int $t9    
+    li $t5, 0x41 #stores 'A' int $t9
+    
