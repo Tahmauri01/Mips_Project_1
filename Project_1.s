@@ -38,3 +38,9 @@ loop:
     lb $t8, 0($t7) #loads new character into $t8
 
     li $t9, 0x30 #loads '0' into $t9
+    li $s4, 0x39 #loads '9' into $s4
+    blt $t8, $t9, check_lowercase #if the char < '0', check lowecase range
+    bgt $t8, $s4, check_uppercase #if char > '9', check lowecase range
+
+    sub $s5, $t8, $t9 #char - '0', converts ASCII to number value
+    j valid_digit #jumps to valid_digit function
