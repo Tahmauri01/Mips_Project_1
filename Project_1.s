@@ -85,4 +85,9 @@ update_index:
 finish_loop:
     beq $s3, $zero, print_na #prints 'N/A' if no valid digits are found
 
+    sub $t9, $s1, $s2 #$t9 = G - H
 
+    li $v0, 1 #command for print integer
+    move $a0, $t9 #value of $t9 into $a0 to print it
+    syscall #calls print function
+    j exit_program #jumps to exit_program function
