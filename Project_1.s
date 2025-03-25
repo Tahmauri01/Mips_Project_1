@@ -66,4 +66,11 @@ check_uppercase:
 not_valid:
     j update_index #skips char if not a valid char
 
+valid_digit:
+    addi $s3, $s3, 1 #adds 1 to digit counter
 
+    li $t8, 5 #loads 5 into $t8
+    blt $s0, $t8, add_first #checks if index < 5 for first half of input
+
+    add $s2, $s2, $s5 #adds digit value to the second half
+    j update_index #jumps to update_index function
