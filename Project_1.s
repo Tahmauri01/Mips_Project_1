@@ -1,6 +1,6 @@
 .data
 inputBuffer: .space 12      #buffer for 10 characters
-NAoutput: .asciiz "N/A"     #Output for invalid string
+outputNA: .asciiz "N/A"     #Output for invalid string
 
 .text
 .globl main
@@ -23,7 +23,7 @@ main:
     li $v0, 8 #reading string command for the input
     la $a0, inputBuffer #uses input buffer
     li $a1, 12 #max amount of characters to read
-    syscall #calls function
+    syscall #calls read command
 
     li $s0, 0 #starting index is 0
     li $s1, 0 #stores G in $s1
@@ -87,7 +87,16 @@ finish_loop:
 
     sub $t9, $s1, $s2 #$t9 = G - H
 
-    li $v0, 1 #command for print integer
-    move $a0, $t9 #value of $t9 into $a0 to print it
-    syscall #calls print function
+    li $v0, 1 #command for printing an integer
+    move $a0, $t9 #moves address of $t9 into $a0 to print it
+    syscall #calls print command
     j exit_program #jumps to exit_program function
+
+print_na:
+    li $vo, 4 #command for printing a string
+    la $a0, outputNA #loads the address of outputNA into $a0
+    syscall #calls print command
+
+exit_program:
+    li $v0, 10 #command for exiting the program
+    syscall #calls exit command
