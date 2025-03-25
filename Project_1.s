@@ -16,5 +16,10 @@ main:
     add $t4, $t3, $t2 #$t4 = 'a' + M
     addi $t4, $t4, -1 #cap for lowercase, $t4 = 'a' + M - 1
 
-    li $t5, 0x41 #stores 'A' int $t9
-    
+    li $t5, 0x41 #stores 'A' int $t5
+    add $t6, $t5, $t2 #$t6 = 'A" + M
+    addi $t6, $t6, -1 #$cap for uppercase, t6 = 'A' + M -1
+
+    li $v0, 8 #reading string command for the input
+    la $a0, inputBuffer #calls input buffer
+    li $a1, 12 #max amount of characters to read
