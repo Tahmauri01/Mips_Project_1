@@ -58,4 +58,12 @@ check_uppercase:
     li $s7, 0x41 #loads 'A' into $s7
     blt $t8, $s7, not_valid #if char < 'A', not a valid char
     bgt $t8, $t6, not_valid #if char > uppercase cap, not a valid char
-    
+
+    sub $s5, $t8, $t7 #s5 = char - 'A'
+    addi $s5, $s5, 10 #s5 = 10 + (char - 'A')
+    j valid_digit #jumps to valid digit function
+
+not_valid:
+    j update_index #skips char if not a valid char
+
+
