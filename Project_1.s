@@ -48,8 +48,14 @@ loop:
 check_lowercase:
     li $s6, 0x61 #loads 'a' in $s6
     blt $t8, $s6, check_uppercase #if char < 'a', checks if its an uppercase
-    bgt $t8, $t4, check_uppercase #if char > lowecase cap, checks if its an uppercase
+    bgt $t8, $t4, check_uppercase #if char > lowercase cap, checks if its an uppercase
 
     sub $s5, $t8, $s6 #if char is lowercase $s5 = char - 'a'
     addi $s5, $s5, 10 #$s5 = 10 + (char - 'a')
+    j valid_digit #jumps to valid_digit function
+
+check_uppercase:
+    li $s7, 0x41 #loads 'A' into $s7
+    blt $t8, $s7, not_valid #if char < 'A', not a valid char
+    bgt $t8, $t6, not_valid #if char > uppercase cap, not a valid char
     
